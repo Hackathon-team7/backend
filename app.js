@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(logger('common'))
 
 app.get('/', (req, res) => {
-  getConnection().models.GroupType.findAll().then((data) => {
+  getConnection().models.Event.findAll().then((data) => {
     res.send(data)
   })
 })
@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   connect().then(() => {
     require('./data-access/models/GroupType')
+    require('./data-access/models/Event')
 
     console.log(`App is running on port: ${PORT}`)
   })
