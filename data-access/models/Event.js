@@ -31,10 +31,6 @@ Event.init({
       validate: {
         max: 45
       }
-    },
-    groupId: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
     }
   },
   {

@@ -19,9 +19,7 @@ app.use('/event', require('./routes/event-router'))
 
 app.listen(PORT, () => {
   connect().then(() => {
-    require('./data-access/models/GroupType')
-    require('./data-access/models/Event')
-
+    require('./data-access/models/models')
     console.log(`App is running on port: ${PORT}`)
   })
 })
