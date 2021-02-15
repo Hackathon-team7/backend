@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000
 
 const app = express()
 
-const {connect, getConnection} = require('./data-access/connector')
+const {connect} = require('./data-access/connector')
 
 app.use(logger('dev'))
 app.use(express.json())
@@ -15,11 +15,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(logger('common'))
 
-app.get('/', (req, res) => {
-  getConnection().models.Event.findAll().then((data) => {
-    res.send(data)
-  })
-})
+app.use('/event', require('./routes/event-router'))
 
 app.listen(PORT, () => {
   connect().then(() => {
